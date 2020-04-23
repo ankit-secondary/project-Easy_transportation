@@ -9,10 +9,12 @@ echo $this->Form->control('report_type', ['class' => 'form-control', 'label' => 
 echo $this->Form->control('message', ['class'     => 'form-control', 'label'     => 'message*']);
 ?>
 
-<?=$this->Form->button('submit', ['type' => 'submit', 'class' => 'btn btn-danger btn-lg']);?>
 </div>
+<?=$this->Form->button('submit', ['type' => 'submit', 'class' => 'btn btn-danger btn-lg']);?>
+
 
 <?=$this->Form->end();?>
+
 <script>
 	$('.form-disable').on('submit',function(){
 var self=$(this),

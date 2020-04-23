@@ -1,21 +1,21 @@
 
 <?php if (!empty($driverdetail)):?>
-<div id='nav'>
+<div class='table-responsive'>
         <h3><?=__(' Your Drivers')?>
 
-        <table border='2'>
+        <table class='table table-dark table-hover'>
             <thead>
                 <tr>
-                    <th><?=$this->Paginator->sort('id')?></th>
-                    <th><?=$this->Paginator->sort('provider id')?></th>
-                    <th><?=$this->Paginator->sort('name')?></th>
-                    <th><?=$this->Paginator->sort('mobileno')?></th>
-                    <th><?=$this->Paginator->sort('state')?></th>
-                    <th><?=$this->Paginator->sort('city')?></th>
-                    <th><?=$this->Paginator->sort('truck_no')?></th>
-                    <th><?=$this->Paginator->sort('profile image')?></th>
-                    <th><?=$this->Paginator->sort('created')?></th>
-                    <th><?=$this->Paginator->sort('modified')?></th>
+                    <th><?='id'?></th>
+                    <th><?='provider id'?></th>
+                    <th><?='name'?></th>
+                    <th><?='mobileno'?></th>
+                    <th><?='state'?></th>
+                    <th><?='city'?></th>
+                    <th><?='truck no'?></th>
+                    <th><?='profile image'?></th>
+                    <th><?='created'?></th>
+                    <th><?='modified'?></th>
 
                     <th class="actions"><?=__('Actions')?></th>
 
@@ -32,13 +32,13 @@
                     <td><?=($driver->state)?></td>
                     <td><?=($driver->city)?></td>
                     <td><?=($driver->truck_no)?></td>
-                    <td><?=$this->Html->image($driver->profile_image, ['height' => '50', 'width' => '60'])?></td>
+                     <td><?php echo $this->Html->image($driver->profile_image, ['height' => '30'])?></td>
                     <td><?=($driver->created)?></td>
                     <td><?=($driver->modified)?></td>
 <td>
-<?=$this->Html->link(__('View'), ['action' => 'viewrequest', $driver->id])?>
+<?=$this->Html->link(__('Delete'), ['action' => 'deletedriver', $driver->id], ['class' => 'btn btn-danger btn-lg'])?>
 
-<?=$this->Form->postLink(__('Cancel'), ['action' => 'Cancelrequest', $driver->id], ['confirm' => __('Are you sure you want to cancel # {0}?', $driver->id)])?>
+<?=$this->Html->link(__('Edit'), ['action' => 'editdriver', $driver->id], ['class' => 'btn btn-success btn-lg'])?>
 </td>
                 </tr>
 <?php endforeach;?>

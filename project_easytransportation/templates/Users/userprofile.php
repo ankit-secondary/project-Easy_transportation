@@ -54,14 +54,16 @@ if ($role == 0):
 if (!empty($requestdetail)):?>
     <h4><?=__('Your Requests')?></h4>
                 <div class="table-responsive">
-                    <table>
+                    <table >
                         <tr>
                             <th><?=__('id')?></th>
                             <th><?=__('pickup_date')?></th>
                             <th><?=__('User_id')?></th>
+                             <th><?=__('Truck')?></th>
                             <th><?=__('pickup_location')?></th>
                             <th><?=__('drop_location')?></th>
                             <th><?=__('weight')?></th>
+                            <th><?=__('Fare')?></th>
                             <th><?=__('created')?></th>
                             <th><?=__('modified')?></th>
                             <th class="actions"><?=__('Actions')?></th>
@@ -69,12 +71,31 @@ if (!empty($requestdetail)):?>
 <?php foreach ($requestdetail as $requests):?>
                         <tr>
                             <td><?=h($requests->id)?></td>
-                            <th><?=h($requests->pickup_date)?></th>
-                            <td><?=h($requests->user_customer_id)?></td>
-                            <td><?=h($requests->pickup_location)?></td>
-                            <td><?=h($requests->drop_location)?></td>
-                            <td><?=h($requests->weight)?></td>
-                            <td><?=h($requests->created)?></td>
+                            <td><?=h($requests->pickup_date)?></td>
+                              <td><?=$user['username']?></td>
+                            <td>
+<?php foreach ($truck as $trucks):?>
+                        <?php if (($requests->truck_id) == ($trucks->id)):?>
+                            <?php $truckname = ($trucks->trucks);
+echo $truckname;
+?>
+                        <?php endif;?>
+                    <?php endforeach;?>
+                        </td>
+                     <td><?php foreach ($area as $areas):?>
+                         <?php if (($requests->pickup_location) == ($areas->id)):?>
+                         <?php $location = ($areas->location);
+echo $location;?>
+
+<?php endif;?>
+                       <?php endforeach;?></td>
+                    <td>
+<?=$requests->drop_location?>
+                    </td>
+
+                            <td><?=h($requests->weight_in_ton)?></td>
+
+ <td><?=h($requests->cost)?></td>                            <td><?=h($requests->created)?></td>
                             <td><?=h($requests->modified)?></td>
                             <td class="actions">
 <?=$this->Html->link(__('view'), ['controller'                                       => 'Users', 'action'                                       => 'viewrequest', $requests->id])?>
@@ -120,8 +141,8 @@ if (!empty($providerdetail)):;?>
                             <td><?=h($providers->city)?></td>
                             <td><?=h($providers->nearby)?></td>
                             <td><?=h($providers->companyname)?></td>
-                            <td><?=$this->html->image($providers->adhar_image,['height'=>'60'])?></td>
-                            <td><?=$this->html->image($providers->pan_image,['height'=>'60'])?></td>
+                            <td><?=$this->html->image($providers->adhar_image, ['height' => '60'])?></td>
+                            <td><?=$this->html->image($providers->pan_image, ['height'   => '60'])?></td>
                             <td><?=h($providers->created)?></td>
                             <td><?=h($providers->modified)?></td>
 
@@ -131,10 +152,10 @@ if (!empty($providerdetail)):;?>
 </table>
                 </div>
 <?php endif;?>
-<?php if(empty($providerdetail)):;?>
+<?php if (empty($providerdetail)):;?>
 
 <?php echo 'please Add your details'.'<br><br>';
-echo $this->Html->link(__('Add detail'), ['action' => 'providers'],['class'=>'logout']);
+echo $this->Html->link(__('Add detail'), ['action' => 'providers'], ['class' => 'logout']);
 ?>
 
 <?php endif;?>

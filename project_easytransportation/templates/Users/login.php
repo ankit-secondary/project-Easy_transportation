@@ -1,3 +1,4 @@
+<title>Login</title>
 <body>
 <?php echo $this->Html->css('login')?>
 <div class='container'>
@@ -11,9 +12,8 @@
 echo $this->Form->control('username', ['class' => 'form-control', 'label' => 'username*']);
 echo $this->Form->control('password', ['class' => 'form-control', 'label' => 'password*']);
 ?>
-<?=$this->Form->control('Remember me', ['type'   => 'checkbox', 'class'   => 'text-center']);?>
+<?=$this->Form->checkbox('remember_me', ['class' => 'remember']);?>Remember ME
 <?=$this->Form->button('Login', ['class'         => 'btn btn-danger btn-lg']);?>
-<?=$this->html->link('Forgot password', ['class' => 'alert-link']);?>
 <?php echo $this->Html->link('Register',
 	array('action' => 'register'),
 	array(
@@ -23,6 +23,7 @@ echo $this->Form->control('password', ['class' => 'form-control', 'label' => 'pa
 		'rule' => 'button',
 	)
 );?>
+<?=$this->html->link('Forgot password ?', ['action' => 'forgotpassword'], ['class' => 'alert-link']);?>
 </div>
 <div class="col-md-4"></div>
 </div>

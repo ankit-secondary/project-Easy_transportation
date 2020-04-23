@@ -6,10 +6,10 @@
 <?php
 echo $this->Form->control('pickup_date', ['class'        => 'form-control', 'placeholder'        => 'YYY:MM:DD']);
 echo $this->Form->control('user_customer_id', ['options' => $users, 'class' => 'form-control']);
-echo $this->Form->control('truck_id', ['options'         => $trucks, 'class'         => 'form-control']);
-echo $this->Form->control('pickup_location', ['options'=>$areas,'class'    => 'form-control']);
+echo $this->Form->control('pickup_location', ['options'  => $areas, 'class'  => 'form-control']);
 echo $this->Form->control('drop_location', ['class'      => 'form-control']);
-echo $this->Form->control('weight_in_ton', ['class'             => 'form-control']);
+echo $this->Form->control('weight_in_ton', ['class'      => 'form-control']);
+echo $this->Form->control('truck_size', ['type'          => 'radio', 'options'          => [['value'          => '0', 'text'          => 'small'], ['value'          => '1', 'text'          => 'medium'], ['value'          => '2', 'text'          => 'large']]]);
 ?>
 <?=$this->Form->button('submit', ['type' => 'submit', 'class' => 'btn btn-success btn-lg']);?>
 <?=$this->Form->end();?>
